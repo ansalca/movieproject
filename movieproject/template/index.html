@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{{movie_list}}<br>
+
+<!--{% for i in movie_list %}<br>-->
+<!--{{i.id}}&#45;&#45;&ndash;&gt; {{i.name}}-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt; {{i.desc}}&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt; {{i.year}}<br>-->
+<!--{% endfor %}-->
+
+{% for i in movie_list %}
+<img src="{{i.img.url}}" height="200" width="150">
+<a href="movie/{{i.id}}/">{{i.name}}----->passing direct url</a><br>
+{% endfor %}
+<br>
+<div class="container">
+    <div class="row">
+        {% for i in movie_list %}
+        <div class="col-md-3">
+            <div class="card" >
+                <img class="card-img-top" src="{{i.img.url}}" alt="Card image cap" height="200px" width="150px">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p class="card-text">{{i.desc}}</p>
+                    <a href="{% url 'movieapp:detail' i.id %}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!--<img src="" >-->
+<!--<a href="">{{i.name}}-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;passing url name</a><br>-->
+
+{% endblock %}
